@@ -19,7 +19,11 @@ jobs:
           distribution: 'temurin'
       # Шаг 3: Компиляция проекта (без тестов)
       - name: Compile with Maven
-        run: mvn clean compile
+        run: mvn -B clean compile
       # Шаг 4: Запуск тестов отдельно
       - name: Run tests
-        run: mvn test
+        run: mvn -B test
+      # Шаг 5: Запуск checkstyle
+      - name: Run Checkstyle for payment-service-application
+        working-directory: ./payment-service-application
+        run: mvn -B checkstyle:check
