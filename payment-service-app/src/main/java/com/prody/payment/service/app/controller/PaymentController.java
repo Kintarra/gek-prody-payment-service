@@ -21,19 +21,19 @@ public class PaymentController {
     private final Payment payment_5 = new Payment(5L, 5.55);
 
     private final Map<Long, Payment> paymentMap = Map.of(
-                                                       payment_1.getId(),payment_1,
-                                                       payment_2.getId(),payment_2,
-                                                       payment_3.getId(),payment_3,
-                                                       payment_4.getId(),payment_4,
-                                                       payment_5.getId(),payment_5
-                                                  );
+        payment_1.getId(), payment_1,
+        payment_2.getId(), payment_2,
+        payment_3.getId(), payment_3,
+        payment_4.getId(), payment_4,
+        payment_5.getId(), payment_5
+    );
 
     @GetMapping("/{id}")
     public Payment getPaymentById(@PathVariable Long id) {
         return paymentMap.get(id);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Payment> getPayments() {
         return new ArrayList<>(paymentMap.values());
     }
